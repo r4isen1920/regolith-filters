@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "meta_gen",
+  "type": "object",
+  "properties": {
+    "outputFile": {
+      "type": "string",
+      "default": "Meta.d.ts",
+      "description": "The output file to write the generated .d.ts file to. Defaults to Meta.d.ts."
+    }
+  }
+}

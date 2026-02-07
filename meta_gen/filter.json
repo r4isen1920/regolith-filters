@@ -1,0 +1,10 @@
+{
+    "description": "This filter generates a `.d.ts` file that contains constants that define the current version of your pack.",
+    "filters": [
+        {
+            "runWith": "nodejs",
+            "script": "./src/meta_gen.js",
+            "name": "Main function"
+        }
+    ]
+}
