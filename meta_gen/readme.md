@@ -63,6 +63,11 @@ Defaults to `false`.
 
 ## Changelog
 
+### 1.2.0
+
+- `syncVersionFromTag` will also now update the dependency versions to match
+- Mirror all file changes to `.regolith/tmp` folder to ensure it makes in compilation
+
 ### 1.1.1
 
 - Fixed an issue whereby the file will not be picked up on compilation. This is done by also writing directly to the `.regolith/tmp` folder
