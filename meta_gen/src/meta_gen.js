@@ -246,4 +246,24 @@ if (existingContent !== content) {
   console.log(
     `Meta file written to ${path.relative(process.env.ROOT_DIR || ".", outputFilePath)}`
   );
+
+  // Also write to .regolith/tmp/ so regolith picks up the file on compilation
+  if (process.env.ROOT_DIR) {
+    const packsAbsolute = path.resolve(process.env.ROOT_DIR, "packs");
+    const relativeFromPacks = path.relative(packsAbsolute, outputFilePath);
+    const tmpOutputPath = path.join(
+      process.env.ROOT_DIR,
+      ".regolith",
+      "tmp",
+      relativeFromPacks
+    );
+    const tmpOutputDir = path.dirname(tmpOutputPath);
+    if (!fs.existsSync(tmpOutputDir)) {
+      fs.mkdirSync(tmpOutputDir, { recursive: true });
+    }
+    fs.writeFileSync(tmpOutputPath, content, "utf8");
+    console.log(
+      `Meta file written to temp folder: ${path.relative(process.env.ROOT_DIR, tmpOutputPath)}`
+    );
+  }
 }

@@ -63,6 +63,10 @@ Defaults to `false`.
 
 ## Changelog
 
+### 1.1.1
+
+- Fixed an issue whereby the file will not be picked up on compilation. This is done by also writing directly to the `.regolith/tmp` folder
+
 ### 1.1.0
 
 - Added optional boolean parameter for filter: `syncVersionFromTag`
