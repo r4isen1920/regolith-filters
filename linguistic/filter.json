@@ -1,0 +1,10 @@
+{
+	"description": "This filter auto-translates your pack into different languages.",
+	"filters": [
+		{
+			"runWith": "nodejs",
+			"script": "./src/linguistic.js",
+			"name": "Main function"
+		}
+	]
+}

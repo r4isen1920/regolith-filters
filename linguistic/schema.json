@@ -1,0 +1,169 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "linguistic",
+	"type": "object",
+	"properties": {
+		"target": {
+			"type": "object",
+			"description": "Defines which locale to translate from and which locales to translate into.",
+			"properties": {
+				"from": {
+					"type": "string",
+					"description": "The source locale to translate from. Must correspond to a .lang file present in BP/texts/ or RP/texts/.",
+					"default": "en_US",
+					"enum": [
+						"en_US",
+						"en_GB",
+						"de_DE",
+						"es_ES",
+						"es_MX",
+						"fr_FR",
+						"fr_CA",
+						"it_IT",
+						"ja_JP",
+						"ko_KR",
+						"pt_BR",
+						"pt_PT",
+						"ru_RU",
+						"zh_CN",
+						"zh_TW",
+						"nl_NL",
+						"bg_BG",
+						"cs_CZ",
+						"da_DK",
+						"el_GR",
+						"fi_FI",
+						"hu_HU",
+						"id_ID",
+						"nb_NO",
+						"pl_PL",
+						"sk_SK",
+						"sv_SE",
+						"tr_TR",
+						"uk_UA"
+					]
+				},
+				"to": {
+					"type": "array",
+					"description": "The target locales to translate into. The source locale is automatically excluded. Defaults to all 29 supported Minecraft locales.",
+					"default": [
+						"en_US",
+						"en_GB",
+						"de_DE",
+						"es_ES",
+						"es_MX",
+						"fr_FR",
+						"fr_CA",
+						"it_IT",
+						"ja_JP",
+						"ko_KR",
+						"pt_BR",
+						"pt_PT",
+						"ru_RU",
+						"zh_CN",
+						"zh_TW",
+						"nl_NL",
+						"bg_BG",
+						"cs_CZ",
+						"da_DK",
+						"el_GR",
+						"fi_FI",
+						"hu_HU",
+						"id_ID",
+						"nb_NO",
+						"pl_PL",
+						"sk_SK",
+						"sv_SE",
+						"tr_TR",
+						"uk_UA"
+					],
+					"items": {
+						"type": "string",
+						"enum": [
+							"en_US",
+							"en_GB",
+							"de_DE",
+							"es_ES",
+							"es_MX",
+							"fr_FR",
+							"fr_CA",
+							"it_IT",
+							"ja_JP",
+							"ko_KR",
+							"pt_BR",
+							"pt_PT",
+							"ru_RU",
+							"zh_CN",
+							"zh_TW",
+							"nl_NL",
+							"bg_BG",
+							"cs_CZ",
+							"da_DK",
+							"el_GR",
+							"fi_FI",
+							"hu_HU",
+							"id_ID",
+							"nb_NO",
+							"pl_PL",
+							"sk_SK",
+							"sv_SE",
+							"tr_TR",
+							"uk_UA"
+						]
+					}
+				}
+			}
+		},
+		"model": {
+			"type": "object",
+			"description": "The translation engine to use. Set id to \"google\" for free Google Translate (no API key needed), or to an LLM model ID for direct LLM-based translation.",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "The model or engine identifier. Use \"google\" for free Google Translate (no API key required). For LLMs, use the exact model ID string.",
+					"enum": [
+						"google",
+						"gpt-4o",
+						"gpt-4o-mini",
+						"gpt-4.1",
+						"gpt-4.1-mini",
+						"gpt-4-turbo",
+						"gpt-3.5-turbo",
+						"gemini-2.5-pro",
+						"gemini-2.0-flash",
+						"gemini-2.0-flash-lite",
+						"gemini-1.5-pro",
+						"gemini-1.5-flash",
+						"claude-opus-4-5",
+						"claude-sonnet-4-5",
+						"claude-3-5-sonnet-20241022",
+						"claude-3-5-haiku-20241022",
+						"claude-3-opus-20240229"
+					]
+				},
+				"key": {
+					"type": "string",
+					"description": "The API key for the selected provider. Optional when id is \"google\" (free, no key needed). Required for all LLM providers (OpenAI, Gemini, Anthropic)."
+				}
+			}
+		},
+		"batch": {
+			"type": "object",
+			"description": "Controls translation batching behaviour. A value of 0 for size uses the provider default (10 for google, 50 for LLMs).",
+			"properties": {
+				"size": {
+					"type": "integer",
+					"description": "Number of items per translation batch. 0 means use provider default (10 for google, 50 for LLMs).",
+					"default": 0,
+					"minimum": 0
+				},
+				"delay": {
+					"type": "integer",
+					"description": "Delay in milliseconds between batches.",
+					"default": 1500,
+					"minimum": 0
+				}
+			}
+		}
+	}
+}
