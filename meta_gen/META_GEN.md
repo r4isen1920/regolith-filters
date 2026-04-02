@@ -16,7 +16,16 @@ This filter generates a `.ts` file that contains constants that define the curre
 
 ## Getting the Filter
 
-Install with: `regolith install meta_gen`. Then, define it in your profile:
+Install with: `regolith install meta_gen` or add the entry to your `filterDefinitions`:
+
+```json
+"meta_gen": {
+  "url": "github.com/r4isen1920/regolith-filters",
+  "version": "1.2.0"
+}
+```
+
+Then define it in your profile:
 
 ```json
 {
