@@ -59,8 +59,8 @@ function parseSemverTag(tag) {
 	// Remove 'v' prefix if present
 	const version = tag.startsWith("v") ? tag.slice(1) : tag;
 
-	// Validate semver format (major.minor.patch)
-	const semverRegex = /^(\d+)\.(\d+)\.(\d+)$/;
+	// Validate semver format (major.minor.patch), optionally with a suffix
+	const semverRegex = /^(\d+)\.(\d+)\.(\d+)(?:[-_.].+)?$/;
 	const match = version.match(semverRegex);
 
 	if (!match) return null;
